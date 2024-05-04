@@ -7,6 +7,6 @@ This project was developed for the [MYY803 Software Engineering ](https://www.cs
 *    Web Framework: Spring Boot
 *    Database: MySql
 *    Programming Language: Java 17
-*	   Build Tool: Maven
+*	Build Tool: Maven
 *    IDE: IntelliJ
 *    Testing: JUnit5, Mockito
