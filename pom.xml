@@ -20,6 +20,7 @@
         <maven.compiler.target>17</maven.compiler.target>
         <maven.compiler.version>3.12.1</maven.compiler.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <hibernate.validator.version>8.0.1.Final</hibernate.validator.version>
         <spotless.version>2.43.0</spotless.version>
         <palantirJavaFormat.version>2.39.0</palantirJavaFormat.version>
     </properties>
@@ -29,6 +30,10 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
 
         <!--security-->
@@ -100,7 +105,7 @@
                 <configuration>
                     <java>
                         <palantirJavaFormat>
-                            <version>${palantirJavaFormat.version}</version>                     <!-- optional -->
+                            <version>${palantirJavaFormat.version}</version>
                         </palantirJavaFormat>
                         <removeUnusedImports/>
                         <trimTrailingWhitespace/>
