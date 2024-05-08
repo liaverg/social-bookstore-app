@@ -14,7 +14,7 @@ public class WebSecurityConfig {
     public SecurityFilterChain filterChainTenant(HttpSecurity http) throws Exception {
         return http.authorizeHttpRequests(authorizationManagerRequestMatcherRegistry -> {
                     authorizationManagerRequestMatcherRegistry
-                            .requestMatchers("/register")
+                            .requestMatchers("/register", "/login")
                             .permitAll();
                 })
                 .build();
