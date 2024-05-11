@@ -1,8 +1,6 @@
 package com.myy803.social_bookstore.controllers;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -42,9 +40,6 @@ public class RegisterControllerTest {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    //    @Mock
-    //    private RegisterUseCase registerUseCase;
-
     @Autowired
     private PasswordEncoder passwordEncoder;
 
@@ -54,8 +49,8 @@ public class RegisterControllerTest {
     }
 
     @Test
-    @DisplayName("Get Registration Page")
-    void registerFormPageShouldReturnCorrectViewAndModel() throws Exception {
+    @DisplayName("Get Register View")
+    void should_get_register_view() throws Exception {
         mockMvc.perform(get("/register"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("auth/register"))
@@ -63,7 +58,8 @@ public class RegisterControllerTest {
     }
 
     @Test
-    void registerProcessShouldRedirectToLoginPageWhenRegistrationSucceeds() throws Exception {
+    @DisplayName("User Registered Successfully")
+    void should_redirect_to_login_page_when_register_succeeds() throws Exception {
         RegisterFormData formData = new RegisterFormData();
         formData.setUsername("username");
         formData.setPassword("password");
@@ -85,7 +81,8 @@ public class RegisterControllerTest {
     }
 
     @Test
-    public void testRegisterFailure() throws Exception {
+    @DisplayName("User Failed To Register")
+    public void should_show_error_message_when_register_fails() throws Exception {
         RegisterFormData formData = new RegisterFormData("username", "password");
         jdbcTemplate.update(
                 "INSERT INTO users (username, password, role) VALUES (?,?, ?)",

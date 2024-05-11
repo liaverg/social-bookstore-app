@@ -29,7 +29,7 @@ public class RegisterServiceTest {
 
     @Test
     @DisplayName("User Registered Successfully")
-    void testRegisterSuccess() {
+    void should_register_when_happy_day_scenario() {
         RegisterCommand command = new RegisterCommand("user", "password123");
         when(userMapper.existsByUsername(command.username())).thenReturn(false);
         when(passwordEncoder.encode(command.password())).thenReturn("encodedPassword");
@@ -44,7 +44,7 @@ public class RegisterServiceTest {
 
     @Test
     @DisplayName("User Failed To Register")
-    void testRegisterFailure_UserExists() {
+    void should_fail_to_register_when_user_exists() {
         RegisterCommand command = new RegisterCommand("existingUser", "password123");
         when(userMapper.existsByUsername(command.username())).thenReturn(true);
 
