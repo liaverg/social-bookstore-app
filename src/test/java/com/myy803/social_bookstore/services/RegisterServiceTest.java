@@ -38,6 +38,7 @@ public class RegisterServiceTest {
 
         assertTrue(result);
         verify(userMapper, times(1)).existsByUsername("user");
+        verify(passwordEncoder, times(1)).encode(command.password());
         verify(userMapper, times(1)).save(any(User.class));
     }
 

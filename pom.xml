@@ -20,6 +20,7 @@
         <maven.compiler.target>17</maven.compiler.target>
         <maven.compiler.version>3.12.1</maven.compiler.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <spring-web.version>6.1.6</spring-web.version>
         <junit-jupiter.version>5.10.0</junit-jupiter.version>
         <spotless.version>2.43.0</spotless.version>
         <palantirJavaFormat.version>2.39.0</palantirJavaFormat.version>
@@ -75,12 +76,16 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring-web.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
             <version>${junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 
     <build>
