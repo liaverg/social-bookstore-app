@@ -22,8 +22,7 @@ public class RegisterController {
     @PostMapping("/register")
     String register(@ModelAttribute("registerFormData") RegisterFormData registerFormData, Model model) {
         RegisterCommand command = new RegisterCommand(registerFormData.getUsername(), registerFormData.getPassword());
-        if (registerUseCase.register(command)){
-            model.addAttribute("message", "User Successfully Registered!");
+        if (registerUseCase.register(command)) {
             return "redirect:/login";
         }
         model.addAttribute("message", "User Failed To Register!");

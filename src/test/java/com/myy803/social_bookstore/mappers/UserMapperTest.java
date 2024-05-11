@@ -9,15 +9,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
 
-@Sql(scripts = "classpath:users/clean-users.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
 @SpringBootTest
+@Sql(scripts = "classpath:users/clean-users.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
 public class UserMapperTest {
     @Autowired
     private UserMapper userMapper;
 
     @Test
     @DisplayName("Find User Successfully")
-    public void findByUsername_WhenUserExists_ShouldReturnUser() {
+    public void should_find_user_when_user_exists() {
         String username = "testUser";
         User user = new User(username, "password", Role.USER);
         userMapper.save(user);
@@ -30,7 +30,7 @@ public class UserMapperTest {
 
     @Test
     @DisplayName("Failed to Find User")
-    public void findByUsername_WhenUserDoesNotExist_ShouldReturnNull() {
+    public void should_return_null_when_user_does_not_exist() {
         String username = "nonExistingUser";
 
         User foundUser = userMapper.findByUsername(username);
@@ -40,7 +40,7 @@ public class UserMapperTest {
 
     @Test
     @DisplayName("User Exists")
-    public void existsByUsername_WhenUserExists_ShouldReturnTrue() {
+    public void should_return_true_when_user_exists() {
         String username = "existingUser";
         User user = new User(username, "password", Role.USER);
         userMapper.save(user);
@@ -52,7 +52,7 @@ public class UserMapperTest {
 
     @Test
     @DisplayName("User Doesn't Exist")
-    public void existsByUsername_WhenUserDoesNotExist_ShouldReturnFalse() {
+    public void should_return_false_when_user_does_not_exist() {
         String username = "nonExistingUser";
 
         boolean exists = userMapper.existsByUsername(username);

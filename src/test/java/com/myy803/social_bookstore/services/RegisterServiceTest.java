@@ -1,7 +1,7 @@
 package com.myy803.social_bookstore.services;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
 import com.myy803.social_bookstore.domain.commands.RegisterCommand;
@@ -29,7 +29,7 @@ public class RegisterServiceTest {
 
     @Test
     @DisplayName("User Registered Successfully")
-    void testRegisterSuccess() {
+    void should_register_when_happy_day_scenario() {
         RegisterCommand command = new RegisterCommand("user", "password123");
         when(userMapper.existsByUsername(command.username())).thenReturn(false);
         when(passwordEncoder.encode(command.password())).thenReturn("encodedPassword");
@@ -38,12 +38,13 @@ public class RegisterServiceTest {
 
         assertTrue(result);
         verify(userMapper, times(1)).existsByUsername("user");
+        verify(passwordEncoder, times(1)).encode(command.password());
         verify(userMapper, times(1)).save(any(User.class));
     }
 
     @Test
     @DisplayName("User Failed To Register")
-    void testRegisterFailure_UserExists() {
+    void should_fail_to_register_when_user_exists() {
         RegisterCommand command = new RegisterCommand("existingUser", "password123");
         when(userMapper.existsByUsername(command.username())).thenReturn(true);
 
