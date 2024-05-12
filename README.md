@@ -3,9 +3,11 @@ An online social bookstore application that allows individuals to exchange used 
 This project was developed for the [MYY803 Software Engineering ](https://www.cse.uoi.gr/course/software-engineering/?lang=en) course [@cse.uoi.gr](https://www.cs.uoi.gr/).
 
 ## Before You Begin
-1. Create the mysql databases and (optional) run the schema.sql script:
+1. Create the mysql databases:
    * socialbookstore
-   * socialbookstoretest
+   * socialbookstoretest  
+     
+   and (optional) run the schema.sql script
 2. Change username and password in application.properties
 
 If the optional part in step 1 is skipped then the schema.sql script is run automatically.
