@@ -32,11 +32,9 @@ public class WebSecurityConfig {
                         .passwordParameter("password"))
                 .logout(logout -> logout.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                         .logoutSuccessUrl("/"))
-                .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry -> {
-                    authorizationManagerRequestMatcherRegistry
-                            .requestMatchers("/register", "/login", "/")
-                            .permitAll();
-                })
+                .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry -> authorizationManagerRequestMatcherRegistry
+                        .requestMatchers("/register", "/login", "/")
+                        .permitAll())
                 .authenticationProvider(authenticationProvider())
                 .build();
     }
