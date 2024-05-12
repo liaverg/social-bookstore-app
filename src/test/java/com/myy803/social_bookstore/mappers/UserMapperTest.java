@@ -2,14 +2,13 @@ package com.myy803.social_bookstore.mappers;
 
 import com.myy803.social_bookstore.domain.model.Role;
 import com.myy803.social_bookstore.domain.model.User;
+import java.util.Optional;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
-
-import java.util.Optional;
 
 @SpringBootTest
 @Sql(scripts = "classpath:users/clean-users.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
