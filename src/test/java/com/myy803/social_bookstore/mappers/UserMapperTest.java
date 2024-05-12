@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
 
+import java.util.Optional;
+
 @SpringBootTest
 @Sql(scripts = "classpath:users/clean-users.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
 public class UserMapperTest {
@@ -22,10 +24,10 @@ public class UserMapperTest {
         User user = new User(username, "password", Role.USER);
         userMapper.save(user);
 
-        User foundUser = userMapper.findByUsername(username);
+        Optional<User> foundUser = userMapper.findByUsername(username);
 
         Assertions.assertNotNull(foundUser);
-        Assertions.assertEquals(username, foundUser.getUsername());
+        Assertions.assertEquals(username, foundUser.get().getUsername());
     }
 
     @Test
@@ -33,9 +35,9 @@ public class UserMapperTest {
     public void should_return_null_when_user_does_not_exist() {
         String username = "nonExistingUser";
 
-        User foundUser = userMapper.findByUsername(username);
+        Optional<User> foundUser = userMapper.findByUsername(username);
 
-        Assertions.assertNull(foundUser);
+        Assertions.assertTrue(foundUser.isEmpty());
     }
 
     @Test
