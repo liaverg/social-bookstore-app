@@ -1,7 +1,7 @@
 package com.myy803.social_bookstore.mappers;
 
-import com.myy803.social_bookstore.domain.model.Role;
-import com.myy803.social_bookstore.domain.model.User;
+import com.myy803.social_bookstore.domain.models.Role;
+import com.myy803.social_bookstore.domain.models.User;
 import java.util.Optional;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;

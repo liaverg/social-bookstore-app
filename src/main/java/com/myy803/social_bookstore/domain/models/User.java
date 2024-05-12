@@ -1,4 +1,4 @@
-package com.myy803.social_bookstore.domain.model;
+package com.myy803.social_bookstore.domain.models;
 
 import jakarta.persistence.*;
 import java.util.Collection;

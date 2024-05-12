@@ -1,6 +1,5 @@
 package com.myy803.social_bookstore.config;
 
-import com.myy803.social_bookstore.services.UserDetailsServiceImp;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,6 +7,7 @@ import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
@@ -17,7 +17,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @RequiredArgsConstructor
 public class WebSecurityConfig {
     private final PasswordEncoder passwordEncoder;
-    private final UserDetailsServiceImp userDetailsServiceImp;
+    private final UserDetailsService userDetailsService;
     private final CustomSecuritySuccessHandler customSecuritySuccessHandler;
 
     @Bean
@@ -32,9 +32,10 @@ public class WebSecurityConfig {
                         .passwordParameter("password"))
                 .logout(logout -> logout.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                         .logoutSuccessUrl("/"))
-                .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry -> authorizationManagerRequestMatcherRegistry
-                        .requestMatchers("/register", "/login", "/")
-                        .permitAll())
+                .authorizeHttpRequests(
+                        authorizationManagerRequestMatcherRegistry -> authorizationManagerRequestMatcherRegistry
+                                .requestMatchers("/register", "/login", "/")
+                                .permitAll())
                 .authenticationProvider(authenticationProvider())
                 .build();
     }
@@ -43,7 +44,7 @@ public class WebSecurityConfig {
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
 
-        authProvider.setUserDetailsService(userDetailsServiceImp);
+        authProvider.setUserDetailsService(userDetailsService);
         authProvider.setPasswordEncoder(passwordEncoder);
 
         return authProvider;

@@ -1,8 +1,8 @@
 package com.myy803.social_bookstore.services;
 
 import com.myy803.social_bookstore.domain.commands.RegisterCommand;
-import com.myy803.social_bookstore.domain.model.Role;
-import com.myy803.social_bookstore.domain.model.User;
+import com.myy803.social_bookstore.domain.models.Role;
+import com.myy803.social_bookstore.domain.models.User;
 import com.myy803.social_bookstore.mappers.UserMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;

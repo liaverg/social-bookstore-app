@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
 import com.myy803.social_bookstore.domain.commands.RegisterCommand;
-import com.myy803.social_bookstore.domain.model.User;
+import com.myy803.social_bookstore.domain.models.User;
 import com.myy803.social_bookstore.mappers.UserMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
