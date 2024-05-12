@@ -1,5 +1,6 @@
 package com.myy803.social_bookstore.config;
 
+import com.myy803.social_bookstore.domain.models.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,7 +26,6 @@ public class WebSecurityConfig {
         return http.csrf(AbstractHttpConfigurer::disable)
                 .formLogin(formLogin -> formLogin
                         .loginPage("/login")
-                        .successForwardUrl("/register")
                         .failureUrl("/login?error=true")
                         .successHandler(customSecuritySuccessHandler)
                         .usernameParameter("username")
@@ -34,8 +34,10 @@ public class WebSecurityConfig {
                         .logoutSuccessUrl("/"))
                 .authorizeHttpRequests(
                         authorizationManagerRequestMatcherRegistry -> authorizationManagerRequestMatcherRegistry
-                                .requestMatchers("/register", "/login", "/")
-                                .permitAll())
+                                .requestMatchers("/register", "/login", "/", "/logout")
+                                .permitAll()
+                                .requestMatchers("/homepage/**")
+                                .authenticated())
                 .authenticationProvider(authenticationProvider())
                 .build();
     }

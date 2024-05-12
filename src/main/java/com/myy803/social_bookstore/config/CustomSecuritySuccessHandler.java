@@ -13,7 +13,7 @@ public class CustomSecuritySuccessHandler extends SimpleUrlAuthenticationSuccess
 
     protected void handle(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
             throws java.io.IOException {
-        String targetUrl = "/register"; // TODO change to correct redirect
+        String targetUrl = "/homepage";
         if (response.isCommitted()) return;
         RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
         redirectStrategy.sendRedirect(request, response, targetUrl);
