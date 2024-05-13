@@ -1,4 +1,4 @@
-package com.myy803.social_bookstore.domain.model;
+package com.myy803.social_bookstore.domain.models;
 
 import jakarta.persistence.*;
 import java.util.Collection;
@@ -15,7 +15,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Long id;
 
     @Setter

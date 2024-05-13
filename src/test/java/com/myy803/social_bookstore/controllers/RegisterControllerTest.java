@@ -6,7 +6,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import com.myy803.social_bookstore.domain.formsdata.RegisterFormData;
-import com.myy803.social_bookstore.domain.model.Role;
+import com.myy803.social_bookstore.domain.models.Role;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
