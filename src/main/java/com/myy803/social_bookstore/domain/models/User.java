@@ -31,11 +31,15 @@ public class User implements UserDetails {
     @Column(name = "role", nullable = false)
     private Role role;
 
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private UserProfile userProfile;
+
     public User(String username, String password, Role role) {
         this.id = null;
         this.username = username;
         this.password = password;
         this.role = role;
+        this.userProfile = new UserProfile(this);
     }
 
     @Override
