@@ -1,5 +1,7 @@
 package com.myy803.social_bookstore.config;
 
+import static com.myy803.social_bookstore.config.EndpointConfig.*;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,18 +26,18 @@ public class WebSecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http.csrf(AbstractHttpConfigurer::disable)
                 .formLogin(formLogin -> formLogin
-                        .loginPage("/login")
-                        .failureUrl("/login?error=true")
+                        .loginPage(LOGIN_PATH)
+                        .failureUrl(LOGIN_PATH + "?error=true")
                         .successHandler(customSecuritySuccessHandler)
                         .usernameParameter("username")
                         .passwordParameter("password"))
-                .logout(logout -> logout.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logout(logout -> logout.logoutRequestMatcher(new AntPathRequestMatcher(LOGOUT_PATH))
                         .logoutSuccessUrl("/"))
                 .authorizeHttpRequests(
                         authorizationManagerRequestMatcherRegistry -> authorizationManagerRequestMatcherRegistry
-                                .requestMatchers("/register", "/login", "/", "/logout")
+                                .requestMatchers("/", LOGIN_PATH, LOGOUT_PATH, REGISTER_PATH)
                                 .permitAll()
-                                .requestMatchers("/homepage/**")
+                                .requestMatchers(HOMEPAGE_PATH + "/**")
                                 .authenticated())
                 .authenticationProvider(authenticationProvider())
                 .build();
