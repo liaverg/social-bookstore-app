@@ -5,12 +5,10 @@ This project was developed for the [MYY803 Software Engineering ](https://www.cs
 ## Before You Begin
 1. Create the mysql databases:
    * socialbookstore
-   * socialbookstoretest  
-     
-   and (optional) run the schema.sql script
+   * socialbookstoretest       
 2. Change username and password in application.properties
 
-If the optional part in step 1 is skipped then the schema.sql script is run automatically.
+The schema.sql script is run automatically.
 
 ## Tech Stack
 
