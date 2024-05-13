@@ -1,6 +1,5 @@
 package com.myy803.social_bookstore.config;
 
-import com.myy803.social_bookstore.domain.models.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
