@@ -44,5 +44,4 @@ create table if not exists user_profile_favorite_book_categories(
     foreign key (user_profile_id) references user_profiles (id) on delete cascade,
     foreign key (book_category_id) references book_categories (id) on delete cascade,
     primary key (id)
-
 );
