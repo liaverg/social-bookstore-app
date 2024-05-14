@@ -10,6 +10,7 @@ create table if not exists user_profiles(
     id                  bigint              not null     auto_increment,
     user_id             bigint              not null     unique,
     full_name           varchar(255),
+    address             varchar(255),
     age                 varchar(3),
     phone_number        varchar(15),
     foreign key (user_id) references users (id) on delete cascade,

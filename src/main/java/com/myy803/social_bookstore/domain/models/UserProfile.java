@@ -2,6 +2,7 @@ package com.myy803.social_bookstore.domain.models;
 
 import jakarta.persistence.*;
 import java.util.List;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
@@ -16,11 +17,17 @@ public class UserProfile {
     @JoinColumn(name = "user_id", nullable = false, unique = true)
     private User user;
 
+    @Getter
     @Column(name = "full_name")
     private String fullName;
 
+    @Getter
+    private String address;
+
+    @Getter
     private String age;
 
+    @Getter
     @Column(name = "phone_number")
     private String phoneNumber;
 
