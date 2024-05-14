@@ -31,6 +31,7 @@ public class UserProfile {
     @Column(name = "phone_number")
     private String phoneNumber;
 
+    @Getter
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "user_profile_favorite_book_categories",
@@ -38,6 +39,7 @@ public class UserProfile {
             inverseJoinColumns = @JoinColumn(name = "book_category_id"))
     private List<BookCategory> favoriteBookCategories;
 
+    @Getter
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "user_profile_favorite_authors",

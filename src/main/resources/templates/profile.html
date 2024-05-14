@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <style>
+        .center-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+
+<div style="text-align: center;">
+    <h1>Social Bookstore App</h1>
+    <div>
+        <a th:href="@{/homepage}" class="btn btn-primary btn-sm mb-3" style="padding: 8px 20px;font-size: 16px;">Homepage</a>
+        <a th:href="@{/logout}" class="btn btn-primary btn-sm mb-3" style="padding: 8px 20px;font-size: 16px;">Logout</a>
+    </div>
+</div>
+<div class="center-content">
+    <h2>User Profile for <span th:text="${username}"></span></h2>
+    <div>
+        <form th:action="@{/profile}" method="post" th:object="${userProfileFormData}">
+            <div>
+                <label for="fullName">Full Name</label><br>
+                <input type="text" id="fullName" name="fullName" th:value="${profile.fullName}">
+            </div>
+            <br>
+            <div>
+                <label for="address">Address</label><br>
+                <input type="text" id="address" name="address" th:value="${profile.address}">
+            </div>
+            <br>
+            <div>
+                <label for="age">Age</label><br>
+                <input type="text" id="age" name="age" th:value="${profile.age}">
+            </div>
+            <br>
+            <div>
+                <label for="phoneNumber">Phone Number</label><br>
+                <input type="text" id="phoneNumber" name="phoneNumber" th:value="${profile.phoneNumber}">
+            </div>
+            <br>
+            <label>Favorite Book Categories:</label><br>
+            <ul>
+                <li th:each="category : ${profile.favoriteBookCategories}" th:text="${category.category}"></li>
+            </ul>
+            Or choose your favorites again:
+            <div th:each="category : ${allBookCategories}">
+                <label>
+                    <input type="checkbox" th:id="${'category_' + category.id}" th:name="'favoriteBookCategoriesIds'" th:value="${category.id}">
+                    <label th:for="${'category_' + category.id}" th:text="${category.category}"></label>
+                </label>
+            </div>
+            <br>
+            <button data-mdb-ripple-init type="submit" class="btn btn-primary btn-block mb-3">Save Changes</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
