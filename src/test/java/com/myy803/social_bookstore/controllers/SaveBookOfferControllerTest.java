@@ -1,12 +1,14 @@
 package com.myy803.social_bookstore.controllers;
 
-import static org.hamcrest.Matchers.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.myy803.social_bookstore.domain.formsdata.UserProfileFormData;
+import com.myy803.social_bookstore.domain.formsdata.SaveBookOfferFormData;
 import com.myy803.social_bookstore.domain.models.Role;
 import java.security.Principal;
+import java.util.Arrays;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -28,7 +30,7 @@ import org.springframework.web.context.WebApplicationContext;
         scripts = {"classpath:add-book-categories.sql", "classpath:add-authors.sql"},
         executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
 @Sql(scripts = "classpath:clean-database.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
-public class ViewUserProfileControllerTest {
+public class SaveBookOfferControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -45,36 +47,29 @@ public class ViewUserProfileControllerTest {
     }
 
     @Test
-    @DisplayName("View User Profile")
-    public void should_view_user_profile() throws Exception {
+    @DisplayName("Save Book Offer")
+    void should_save_book_offer() throws Exception {
         String username = "username";
         jdbcTemplate.update(
                 "INSERT INTO users (username, password, role) VALUES (?,?, ?)",
                 username,
                 "encoded password",
                 Role.USER.toString());
-        jdbcTemplate.update(
-                "INSERT INTO user_profiles (id, user_id, full_name, address, age, phone_number)  VALUES (?,?,?,?,?,?)",
-                1,
-                1,
-                "John Doe",
-                "123 Main St",
-                "30",
-                "123-456-7890");
-        jdbcTemplate.update(
-                "INSERT INTO user_profile_favorite_book_categories (id, user_profile_id, book_category_id) VALUES (?,?, ?)",
-                1,
-                1,
-                10);
-        jdbcTemplate.update(
-                "INSERT INTO user_profile_favorite_authors (id, user_profile_id, author_id) VALUES (?, ?, ?)", 1, 1, 2);
+        jdbcTemplate.update("INSERT INTO user_profiles (id, user_id)  VALUES (?,?)", 1, 1);
+        SaveBookOfferFormData formData = new SaveBookOfferFormData("Book Title", 2L, Arrays.asList(1L), "Summary");
         Principal principal = () -> username;
 
-        mockMvc.perform(get("/profile").principal(principal))
-                .andExpect(status().isOk())
-                .andExpect(view().name("profile"))
-                .andExpect(model().attribute("allBookCategories", hasSize(11)))
-                .andExpect(model().attribute("allAuthors", hasSize(2)))
-                .andExpect(model().attribute("userProfileFormData", instanceOf(UserProfileFormData.class)));
+        mockMvc.perform(post("/book-offers/save").principal(principal).flashAttr("saveBookOfferFormData", formData))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/homepage"));
+
+        jdbcTemplate.query(
+                "SELECT * FROM books WHERE title = ?",
+                (rs, rowNum) -> {
+                    Assertions.assertEquals("Book Title", rs.getString("title"));
+                    Assertions.assertEquals("Summary", rs.getString("summary"));
+                    return null;
+                },
+                "Book Title");
     }
 }

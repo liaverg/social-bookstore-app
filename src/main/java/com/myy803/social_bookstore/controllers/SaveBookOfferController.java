@@ -32,7 +32,7 @@ public class SaveBookOfferController {
 
     @PostMapping(BOOK_OFFERS_SAVE_PATH)
     String saveBookOffer(
-            @ModelAttribute("saveBokOfferFormData") SaveBookOfferFormData saveBookOfferFormData, Principal principal) {
+            @ModelAttribute("saveBookOfferFormData") SaveBookOfferFormData saveBookOfferFormData, Principal principal) {
         SaveBookOfferCommand command = new SaveBookOfferCommand(
                 principal.getName(),
                 saveBookOfferFormData.getBookTitle(),
