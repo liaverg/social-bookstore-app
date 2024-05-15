@@ -59,4 +59,19 @@ public class UserProfile {
         this.id = null;
         this.user = user;
     }
+
+    public void update(
+            String fullName,
+            String address,
+            String age,
+            String phoneNumber,
+            List<BookCategory> favoriteBookCategories,
+            List<Author> favoriteAuthors) {
+        this.fullName = fullName;
+        this.address = address;
+        this.age = age;
+        this.phoneNumber = phoneNumber;
+        this.favoriteBookCategories = favoriteBookCategories;
+        this.favoriteAuthors = favoriteAuthors;
+    }
 }
