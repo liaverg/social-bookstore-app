@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Table(name = "users")
 @NoArgsConstructor
 public class User implements UserDetails {
+    @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
