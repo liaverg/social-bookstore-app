@@ -10,7 +10,6 @@
     <style>
         .center-content {
             display: flex;
-            justify-content: center;
             align-items: center;
             flex-direction: column;
             height: 100vh;
@@ -50,15 +49,21 @@
                 <input type="text" id="phoneNumber" name="phoneNumber" th:value="${profile.phoneNumber}">
             </div>
             <br>
-            <label>Favorite Book Categories:</label><br>
-            <ul>
-                <li th:each="category : ${profile.favoriteBookCategories}" th:text="${category.category}"></li>
-            </ul>
-            Or choose your favorites again:
-            <div th:each="category : ${allBookCategories}">
+            <label>Favorite Book Categories</label><br>
+            <div th:each="bookCategory : ${allBookCategories}">
+                    <label>
+                        <input type="checkbox" th:id="${'bookCategory_' + bookCategory.id}" th:name="'favoriteBookCategoriesIds'" th:value="${bookCategory.id}"
+                                th:checked = "${#lists.contains(T(com.myy803.social_bookstore.config.ThymeleafUtil).getBookCategoryIds(profile.favoriteBookCategories), bookCategory.id)}">
+                        <label th:for="${'bookCategory_' + bookCategory.id}" th:text="${bookCategory.category}"></label>
+                    </label>
+            </div>
+            <br>
+            <label>Favorite Authors</label><br>
+            <div th:each="author : ${allAuthors}">
                 <label>
-                    <input type="checkbox" th:id="${'category_' + category.id}" th:name="'favoriteBookCategoriesIds'" th:value="${category.id}">
-                    <label th:for="${'category_' + category.id}" th:text="${category.category}"></label>
+                    <input type="checkbox" th:id="${'author_' + author.id}" th:name="'favoriteAuthorsIds'" th:value="${author.id}"
+                           th:checked = "${#lists.contains(T(com.myy803.social_bookstore.config.ThymeleafUtil).getAuthorIds(profile.favoriteAuthors), author.id)}">
+                    <label th:for="${'author_' + author.id}" th:text="${author.name}"></label>
                 </label>
             </div>
             <br>
