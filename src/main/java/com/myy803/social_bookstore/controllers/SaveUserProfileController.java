@@ -20,8 +20,7 @@ public class SaveUserProfileController {
     @PostMapping(USER_PROFILE_PATH)
     String saveUserProfile(
             @ModelAttribute("userProfileFormData") UserProfileFormData userProfileFormData,
-            Principal principal,
-            Model model) {
+            Principal principal) {
         SaveUserProfileCommand command = new SaveUserProfileCommand(
                 principal.getName(),
                 userProfileFormData.getFullName(),
