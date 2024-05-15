@@ -45,7 +45,7 @@
             <label>Add Authors</label><br>
             <div th:each="author : ${allAuthors}">
                 <label>
-                    <input type="checkbox" th:id="${'author_' + author.id}" th:name="'authorsIds'" th:value="${author.id}" required>
+                    <input type="checkbox" th:id="${'author_' + author.id}" th:name="'authorsIds'" th:value="${author.id}">
                     <label th:for="${'author_' + author.id}" th:text="${author.name}"></label>
                 </label>
             </div>

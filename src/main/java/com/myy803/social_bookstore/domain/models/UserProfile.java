@@ -77,4 +77,8 @@ public class UserProfile {
         this.favoriteBookCategories = favoriteBookCategories;
         this.favoriteAuthors = favoriteAuthors;
     }
+
+    public void saveBookOffer(Book book) {
+        bookOffers.add(book);
+    }
 }
