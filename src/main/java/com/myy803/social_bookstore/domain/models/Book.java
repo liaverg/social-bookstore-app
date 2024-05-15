@@ -1,7 +1,6 @@
 package com.myy803.social_bookstore.domain.models;
 
 import jakarta.persistence.*;
-
 import java.util.List;
 
 @Entity
