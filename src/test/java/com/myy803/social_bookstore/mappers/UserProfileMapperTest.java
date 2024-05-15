@@ -1,6 +1,5 @@
 package com.myy803.social_bookstore.mappers;
 
-import com.myy803.social_bookstore.domain.models.Author;
 import com.myy803.social_bookstore.domain.models.Role;
 import com.myy803.social_bookstore.domain.models.User;
 import com.myy803.social_bookstore.domain.models.UserProfile;
@@ -10,8 +9,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
-
-import java.util.List;
 
 @SpringBootTest
 @Sql(scripts = "classpath:clean-database.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)

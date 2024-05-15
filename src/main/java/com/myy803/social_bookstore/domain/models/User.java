@@ -9,22 +9,20 @@ import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+@Getter
 @Entity
 @Table(name = "users")
 @NoArgsConstructor
 public class User implements UserDetails {
-    @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Setter
-    @Getter
     @Column(name = "username", unique = true, nullable = false)
     private String username;
 
     @Setter
-    @Getter
     @Column(name = "password", nullable = false)
     private String password;
 
