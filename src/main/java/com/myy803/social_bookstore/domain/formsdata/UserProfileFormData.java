@@ -16,5 +16,5 @@ public class UserProfileFormData {
     private String age;
     private String phoneNumber;
     private List<Long> favoriteBookCategoriesIds;
-    // favorite authors
+    private List<Long> favoriteAuthorsIds;
 }

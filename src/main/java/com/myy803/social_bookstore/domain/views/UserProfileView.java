@@ -14,5 +14,5 @@ public class UserProfileView {
     private String age;
     private String phoneNumber;
     private List<BookCategoryView> favoriteBookCategories;
-    // favorite authors
+    private List<AuthorView> favoriteAuthors;
 }

@@ -1,6 +1,7 @@
 package com.myy803.social_bookstore.services;
 
 import com.myy803.social_bookstore.domain.models.UserProfile;
+import com.myy803.social_bookstore.domain.views.AuthorView;
 import com.myy803.social_bookstore.domain.views.BookCategoryView;
 import com.myy803.social_bookstore.domain.views.UserProfileView;
 import com.myy803.social_bookstore.mappers.UserMapper;
@@ -27,6 +28,9 @@ public class ViewUserProfileService implements ViewUserProfileUseCase {
                 userProfile.getPhoneNumber(),
                 userProfile.getFavoriteBookCategories().stream()
                         .map(bookCategory -> new BookCategoryView(bookCategory.getId(), bookCategory.getCategory()))
+                        .toList(),
+                userProfile.getFavoriteAuthors().stream()
+                        .map(author -> new AuthorView(author.getId(), author.getName()))
                         .toList());
     }
 }
