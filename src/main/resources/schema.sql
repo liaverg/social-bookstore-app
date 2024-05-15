@@ -46,3 +46,23 @@ create table if not exists user_profile_favorite_authors(
     foreign key (author_id) references authors (id) on delete cascade,
     primary key (id)
 );
+
+create table if not exists books(
+    id                  bigint              not null     auto_increment,
+    user_profile_id             bigint              not null,
+    title               varchar(255)        not null,
+    book_category_id    bigint              not null,
+    summary             varchar(255)        not null,
+    foreign key (user_profile_id) references user_profiles (id) on delete cascade,
+    foreign key (book_category_id) references book_categories (id) on delete cascade,
+    primary key (id)
+);
+
+create table if not exists book_authors(
+    id                  bigint              not null     auto_increment,
+    book_id             bigint              not null,
+    author_id           bigint              not null,
+    foreign key (book_id) references books (id) on delete cascade,
+    foreign key (author_id) references authors (id) on delete cascade,
+    primary key (id)
+);

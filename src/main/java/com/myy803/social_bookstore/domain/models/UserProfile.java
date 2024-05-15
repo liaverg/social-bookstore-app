@@ -55,6 +55,9 @@ public class UserProfile {
             inverseJoinColumns = @JoinColumn(name = "author_id"))
     private List<Author> favoriteAuthors;
 
+    @OneToMany(mappedBy = "userProfile", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Book> bookOffers;
+
     public UserProfile(User user) {
         this.id = null;
         this.user = user;
