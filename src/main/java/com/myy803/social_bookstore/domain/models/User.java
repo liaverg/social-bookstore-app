@@ -9,6 +9,7 @@ import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+@Getter
 @Entity
 @Table(name = "users")
 @NoArgsConstructor
@@ -18,12 +19,10 @@ public class User implements UserDetails {
     private Long id;
 
     @Setter
-    @Getter
     @Column(name = "username", unique = true, nullable = false)
     private String username;
 
     @Setter
-    @Getter
     @Column(name = "password", nullable = false)
     private String password;
 
@@ -31,11 +30,15 @@ public class User implements UserDetails {
     @Column(name = "role", nullable = false)
     private Role role;
 
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private UserProfile userProfile;
+
     public User(String username, String password, Role role) {
         this.id = null;
         this.username = username;
         this.password = password;
         this.role = role;
+        this.userProfile = new UserProfile(this);
     }
 
     @Override

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <style>
+        .center-content {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+
+<div style="text-align: center;">
+    <h1>Social Bookstore App</h1>
+    <div>
+        <a th:href="@{/homepage}" class="btn btn-primary btn-sm mb-3" style="padding: 8px 20px;font-size: 16px;">Homepage</a>
+        <a th:href="@{/logout}" class="btn btn-primary btn-sm mb-3" style="padding: 8px 20px;font-size: 16px;">Logout</a>
+    </div>
+</div>
+<div class="center-content">
+    <h2>User Profile for <span th:text="${username}"></span></h2>
+    <div>
+        <form th:action="@{/profile}" method="post" th:object="${userProfileFormData}">
+            <div>
+                <label for="fullName">Full Name</label><br>
+                <input type="text" id="fullName" name="fullName" th:value="${profile.fullName}">
+            </div>
+            <br>
+            <div>
+                <label for="address">Address</label><br>
+                <input type="text" id="address" name="address" th:value="${profile.address}">
+            </div>
+            <br>
+            <div>
+                <label for="age">Age</label><br>
+                <input type="text" id="age" name="age" th:value="${profile.age}">
+            </div>
+            <br>
+            <div>
+                <label for="phoneNumber">Phone Number</label><br>
+                <input type="text" id="phoneNumber" name="phoneNumber" th:value="${profile.phoneNumber}">
+            </div>
+            <br>
+            <label>Favorite Book Categories</label><br>
+            <div th:each="bookCategory : ${allBookCategories}">
+                    <label>
+                        <input type="checkbox" th:id="${'bookCategory_' + bookCategory.id}" th:name="'favoriteBookCategoriesIds'" th:value="${bookCategory.id}"
+                                th:checked = "${#lists.contains(T(com.myy803.social_bookstore.config.ThymeleafUtil).getBookCategoryIds(profile.favoriteBookCategories), bookCategory.id)}">
+                        <label th:for="${'bookCategory_' + bookCategory.id}" th:text="${bookCategory.category}"></label>
+                    </label>
+            </div>
+            <br>
+            <label>Favorite Authors</label><br>
+            <div th:each="author : ${allAuthors}">
+                <label>
+                    <input type="checkbox" th:id="${'author_' + author.id}" th:name="'favoriteAuthorsIds'" th:value="${author.id}"
+                           th:checked = "${#lists.contains(T(com.myy803.social_bookstore.config.ThymeleafUtil).getAuthorIds(profile.favoriteAuthors), author.id)}">
+                    <label th:for="${'author_' + author.id}" th:text="${author.name}"></label>
+                </label>
+            </div>
+            <br>
+            <button data-mdb-ripple-init type="submit" class="btn btn-primary btn-block mb-3">Save Changes</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
