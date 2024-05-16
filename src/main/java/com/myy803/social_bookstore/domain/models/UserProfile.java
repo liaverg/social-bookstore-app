@@ -39,7 +39,7 @@ public class UserProfile {
 
     @Setter
     @Getter
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(
             name = "user_profile_favorite_book_categories",
             joinColumns = @JoinColumn(name = "user_profile_id"),
@@ -48,7 +48,7 @@ public class UserProfile {
 
     @Setter
     @Getter
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(
             name = "user_profile_favorite_authors",
             joinColumns = @JoinColumn(name = "user_profile_id"),
