@@ -73,8 +73,8 @@ public class ViewUserProfileControllerTest {
         mockMvc.perform(get("/profile").principal(principal))
                 .andExpect(status().isOk())
                 .andExpect(view().name("profile"))
-                .andExpect(model().attribute("allBookCategories", hasSize(11)))
-                .andExpect(model().attribute("allAuthors", hasSize(2)))
+                .andExpect(model().attribute("allBookCategories", hasSize(12)))
+                .andExpect(model().attribute("allAuthors", hasSize(4)))
                 .andExpect(model().attribute("userProfileFormData", instanceOf(UserProfileFormData.class)));
     }
 }

@@ -5,6 +5,7 @@ truncate table user_profiles;
 truncate table authors;
 truncate table book_categories;
 truncate table user_profile_favorite_authors;
+truncate table user_profile_favorite_book_categories;
 truncate table books;
 truncate table book_authors;
 

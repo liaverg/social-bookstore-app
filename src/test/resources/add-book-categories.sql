@@ -9,4 +9,5 @@ insert into book_categories (id, category)
            (8, 'Literature'),
            (9, 'Adventure'),
            (10, 'Crime'),
-           (11, 'Other');
+           (11, 'Romance'),
+           (12, 'Other');
