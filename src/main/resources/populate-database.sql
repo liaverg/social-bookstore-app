@@ -1,3 +1,7 @@
+# username: test, password: test
+insert ignore into users (id, username, password, role)
+    values (1, 'test', '$2a$10$ku.wChLUJ8oe8mxS/fa52eBaParyGO5B.y9F44gor85IAo1dyqA/q', 'USER');
+
 insert ignore into user_profiles (id, user_id, full_name, address, age, phone_number)
     values (1, 1, 'Mpampis Mpampoounis', 'Stavrou Niarxou 13, Ioannina', '24', '698000000');
 

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <style>
+        .center-content {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+
+<div style="text-align: center;">
+    <h1>Social Bookstore App</h1>
+    <div>
+        <a th:href="@{/homepage}" class="btn btn-primary btn-sm mb-3" style="padding: 8px 20px;font-size: 16px;">Homepage</a>
+        <a th:href="@{/logout}" class="btn btn-primary btn-sm mb-3" style="padding: 8px 20px;font-size: 16px;">Logout</a>
+    </div>
+</div>
+<div class="center-content">
+    <h2>Add Book Offer</h2>
+    <div>
+        <form th:action="@{/book-offers/save}" method="post" th:object="${bookFormData}">
+            <div>
+                <label for="bookTitle">Book Title</label><br>
+                <input type="text" id="bookTitle" name="bookTitle" th:field="*{bookTitle}" required>
+            </div>
+            <br>
+            <label>Choose Book Category</label><br>
+            <div th:each="bookCategory : ${allBookCategories}">
+                <label>
+                    <input type="radio" th:id="${'bookCategory_' + bookCategory.id}" th:name="'bookCategoryId'" th:value="${bookCategory.id}" required>
+                    <label th:for="${'bookCategory_' + bookCategory.id}" th:text="${bookCategory.category}"></label>
+                </label>
+            </div>
+            <br>
+            <label>Add Authors</label><br>
+            <div th:each="author : ${allAuthors}">
+                <label>
+                    <input type="checkbox" th:id="${'author_' + author.id}" th:name="'authorsIds'" th:value="${author.id}">
+                    <label th:for="${'author_' + author.id}" th:text="${author.name}"></label>
+                </label>
+            </div>
+            <div>
+                <label for="summary">Summary</label><br>
+                <textarea id="summary" name="summary" th:field="*{summary}" required></textarea>
+            </div>
+            <br>
+            <button data-mdb-ripple-init type="submit" class="btn btn-primary btn-block mb-3">Save Book Offer</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

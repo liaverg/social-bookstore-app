@@ -8,7 +8,6 @@ import com.myy803.social_bookstore.services.SaveUserProfileUseCase;
 import java.security.Principal;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -19,9 +18,7 @@ public class SaveUserProfileController {
 
     @PostMapping(USER_PROFILE_PATH)
     String saveUserProfile(
-            @ModelAttribute("userProfileFormData") UserProfileFormData userProfileFormData,
-            Principal principal,
-            Model model) {
+            @ModelAttribute("userProfileFormData") UserProfileFormData userProfileFormData, Principal principal) {
         SaveUserProfileCommand command = new SaveUserProfileCommand(
                 principal.getName(),
                 userProfileFormData.getFullName(),

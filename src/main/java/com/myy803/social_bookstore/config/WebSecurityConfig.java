@@ -37,7 +37,7 @@ public class WebSecurityConfig {
                         authorizationManagerRequestMatcherRegistry -> authorizationManagerRequestMatcherRegistry
                                 .requestMatchers("/", LOGIN_PATH, LOGOUT_PATH, REGISTER_PATH)
                                 .permitAll()
-                                .requestMatchers(HOMEPAGE_PATH, USER_PROFILE_PATH)
+                                .requestMatchers(HOMEPAGE_PATH, USER_PROFILE_PATH, BOOK_OFFERS_SAVE_PATH)
                                 .authenticated())
                 .authenticationProvider(authenticationProvider())
                 .build();
