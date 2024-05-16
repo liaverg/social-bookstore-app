@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View Book Offers Page</title>
+
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <style>
+        .center-content {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+
+<div style="text-align: center;">
+    <h1>Social Bookstore App</h1>
+    <div>
+        <a th:href="@{/homepage}" class="btn btn-primary btn-sm mb-3" style="padding: 8px 20px;font-size: 16px;">Homepage</a>
+        <a th:href="@{/logout}" class="btn btn-primary btn-sm mb-3" style="padding: 8px 20px;font-size: 16px;">Logout</a>
+    </div>
+</div>
+<div class="center-content">
+    <div class="container">
+        <h2>Book Offers</h2>
+        <hr class="hr">
+
+        <table class="table table-bordered table-striped" id="book-offer-table">
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Author(s)</th>
+                <th>Summary</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="bookOffer: ${allBookOffers}">
+                <td th:text="${bookOffer.title}"></td>
+                <td th:text="${bookOffer.category}"></td>
+                <td>
+                    <ul>
+                        <li th:each="author: ${bookOffer.authors}" th:text="${author}"></li>
+                    </ul>
+                </td>
+                <td th:text="${bookOffer.summary}"></td>
+                <td>
+                    <div class="row">
+                        <div class="column">
+                            <a href=""
+                               class="btn btn-primary mb-2 primaryButton disabled">
+                                View Book Requests
+                            </a>
+                        </div>
+                        <div class="column">
+                            <a href=""
+                               class="btn  btn-primary mb-2 primaryButton btn-danger"
+                               onclick="if (!(confirm('This book offer and its book requests will be deleted. Are you sure you want to delete this book offer? '))) return false">
+                                Delete
+                            </a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

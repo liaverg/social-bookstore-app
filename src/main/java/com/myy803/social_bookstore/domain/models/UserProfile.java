@@ -55,6 +55,8 @@ public class UserProfile {
             inverseJoinColumns = @JoinColumn(name = "author_id"))
     private List<Author> favoriteAuthors;
 
+    @Setter
+    @Getter
     @OneToMany(mappedBy = "userProfile", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Book> bookOffers;
 
@@ -76,9 +78,5 @@ public class UserProfile {
         this.phoneNumber = phoneNumber;
         this.favoriteBookCategories = favoriteBookCategories;
         this.favoriteAuthors = favoriteAuthors;
-    }
-
-    public void saveBookOffer(Book book) {
-        bookOffers.add(book);
     }
 }

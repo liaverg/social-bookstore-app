@@ -3,8 +3,10 @@ package com.myy803.social_bookstore.domain.models;
 import jakarta.persistence.*;
 import java.util.List;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+@Getter
 @Entity
 @Table(name = "books")
 @NoArgsConstructor
