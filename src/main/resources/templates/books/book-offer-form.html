@@ -28,7 +28,7 @@
 <div class="center-content">
     <h2>Add Book Offer</h2>
     <div>
-        <form th:action="@{/book-offers/save}" method="post" th:object="${saveBookOfferFormData}">
+        <form th:action="@{/book-offers/save}" method="post" th:object="${bookFormData}">
             <div>
                 <label for="bookTitle">Book Title</label><br>
                 <input type="text" id="bookTitle" name="bookTitle" th:field="*{bookTitle}" required>

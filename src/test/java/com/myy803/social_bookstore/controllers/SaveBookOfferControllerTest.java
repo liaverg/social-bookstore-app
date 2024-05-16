@@ -4,7 +4,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.myy803.social_bookstore.domain.formsdata.SaveBookOfferFormData;
+import com.myy803.social_bookstore.domain.formsdata.BookFormData;
 import com.myy803.social_bookstore.domain.models.Role;
 import java.security.Principal;
 import java.util.Arrays;
@@ -56,10 +56,10 @@ public class SaveBookOfferControllerTest {
                 "encoded password",
                 Role.USER.toString());
         jdbcTemplate.update("INSERT INTO user_profiles (id, user_id)  VALUES (?,?)", 1, 1);
-        SaveBookOfferFormData formData = new SaveBookOfferFormData("Book Title", 2L, Arrays.asList(1L), "Summary");
+        BookFormData formData = new BookFormData("Book Title", 2L, Arrays.asList(1L, 2L), "Summary");
         Principal principal = () -> username;
 
-        mockMvc.perform(post("/book-offers/save").principal(principal).flashAttr("saveBookOfferFormData", formData))
+        mockMvc.perform(post("/book-offers/save").principal(principal).flashAttr("bookFormData", formData))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/homepage"));
 

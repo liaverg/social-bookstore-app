@@ -10,7 +10,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class SaveBookOfferFormData {
+public class BookFormData {
     private String bookTitle;
     private Long bookCategoryId;
     private List<Long> authorsIds;
