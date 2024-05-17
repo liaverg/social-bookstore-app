@@ -7,4 +7,5 @@ public class EndpointConfig {
     public static final String HOMEPAGE_PATH = "/homepage";
     public static final String USER_PROFILE_PATH = "/profile";
     public static final String BOOK_OFFERS_SAVE_PATH = "/book-offers/save";
+    public static final String BOOK_OFFERS_VIEW_PATH = "/book-offers";
 }

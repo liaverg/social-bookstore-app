@@ -39,7 +39,7 @@ public class UserProfile {
 
     @Setter
     @Getter
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(
             name = "user_profile_favorite_book_categories",
             joinColumns = @JoinColumn(name = "user_profile_id"),
@@ -48,13 +48,15 @@ public class UserProfile {
 
     @Setter
     @Getter
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(
             name = "user_profile_favorite_authors",
             joinColumns = @JoinColumn(name = "user_profile_id"),
             inverseJoinColumns = @JoinColumn(name = "author_id"))
     private List<Author> favoriteAuthors;
 
+    @Setter
+    @Getter
     @OneToMany(mappedBy = "userProfile", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Book> bookOffers;
 
@@ -76,9 +78,5 @@ public class UserProfile {
         this.phoneNumber = phoneNumber;
         this.favoriteBookCategories = favoriteBookCategories;
         this.favoriteAuthors = favoriteAuthors;
-    }
-
-    public void saveBookOffer(Book book) {
-        bookOffers.add(book);
     }
 }
