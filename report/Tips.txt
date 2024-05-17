@@ -1,0 +1,22 @@
+Steps to implement use case:
+1. Add endpoint path to EndpointConfig
+2. Add the path in the WebSecurityConfig in the requestMatchers for authenticated (like HOMEPAGE_PATH, USER_PROFILE_PATH, etc)
+
+3. Create Controller in controllers package
+4. If you need data from the html template page then create FormData in the domain.formsdata
+5. If you need to pass many objects to the services layers (username, bookOfferId,etc) create command in domain.commands
+6. Create interface of Use Case in the services package and call the interface in the controller
+7. Implement interface in the services layer (use data from command or what you get from mappers as domain models)
+
+--Testing--
+8. Create html template in resources/templates (in this page you can get and set whatever you put in the Model in the controllers)
+9. Acceptance test: See if it works when you run it, access the webpage, do what you want. You can check the database by eye (ναι με το ματι)
+10. Tests-tests: Do Tests for Controller and Service in the format that they are done for other use cases
+
+--Reporting--
+11. Add the CRC cards for all the classes that you created in the Report.
+
+Useful Info:
+1. spotless cleans format (go to m (maven) -> social_bookstore -> spotless -> apply
+2. New branch to commit and push changes there. When finished do a Pull Request through github page and squash and merge to main.
+3. Checkout in git helps you move to different branches

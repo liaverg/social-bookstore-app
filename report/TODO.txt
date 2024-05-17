@@ -1,0 +1,14 @@
+Implement the following use cases (descending order of importance, with 1 being the highest priority, followed by 2, etc):
+1. DeleteBookOffer (the deletion of the book requests will be implemented at later date, for now delete the offer)
+
+2. SearchBookRequest
+3. BrowseBookRequest
+both 2 and 3 use template strategy shiet, see the guidelines and hints and the requirement definitions.
+the patterns are important to be implemented
+
+4.SaveBookRequest
+it can be implemented after the searching is done successfully
+
+5. ViewBookRequestsForSpecificBookOffer
+6. AcceptBookRequest
+7. ViewContactInformation
