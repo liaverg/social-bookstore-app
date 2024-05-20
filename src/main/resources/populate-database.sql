@@ -62,9 +62,9 @@ insert ignore into book_authors (id, book_id, author_id)
            (5, 5, 2),
            (6, 5, 4);
 
-insert ignore into book_requesting_users(id, book_id, user_profile_id)
-    values (1, 1, 2),
-           (2, 1, 3),
-           (3, 4, 2),
-           (4, 5, 2),
-           (5, 5, 3);
+insert ignore into book_requesting_users(id, book_id, user_profile_id, status)
+    values (1, 1, 2, 'PENDING'),
+           (2, 1, 3, 'PENDING'),
+           (3, 4, 2, 'PENDING'),
+           (4, 5, 2, 'PENDING'),
+           (5, 5, 3, 'PENDING');
