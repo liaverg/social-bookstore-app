@@ -1,5 +1,6 @@
 package com.myy803.social_bookstore.controllers;
 
+import static com.myy803.social_bookstore.config.EndpointConfig.REGISTER_PATH;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -51,7 +52,7 @@ public class RegisterControllerTest {
     @Test
     @DisplayName("Get Register View")
     void should_get_register_view() throws Exception {
-        mockMvc.perform(get("/register"))
+        mockMvc.perform(get(REGISTER_PATH))
                 .andExpect(status().isOk())
                 .andExpect(view().name("auth/register"))
                 .andExpect(model().attributeExists("registerFormData"));

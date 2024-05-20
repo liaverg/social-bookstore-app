@@ -1,5 +1,6 @@
 package com.myy803.social_bookstore.controllers;
 
+import static com.myy803.social_bookstore.config.EndpointConfig.USER_PROFILE_PATH;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -57,9 +58,9 @@ public class SaveUserProfileControllerTest {
                 new UserProfileFormData("John Doe", "123 Main St", "30", "123-456-7890", List.of(10L), List.of(2L));
         Principal principal = () -> USERNAME;
 
-        mockMvc.perform(post("/profile").principal(principal).flashAttr("userProfileFormData", formData))
+        mockMvc.perform(post(USER_PROFILE_PATH).principal(principal).flashAttr("userProfileFormData", formData))
                 .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/profile"));
+                .andExpect(redirectedUrl(USER_PROFILE_PATH));
 
         jdbcTemplate.query(
                 "SELECT up.*, bc.category AS book_category, a.name AS author " + "FROM user_profiles up "

@@ -1,5 +1,7 @@
 package com.myy803.social_bookstore.controllers;
 
+import static com.myy803.social_bookstore.config.EndpointConfig.ACCEPT_REQUESTS_PATH;
+import static com.myy803.social_bookstore.config.EndpointConfig.BOOK_OFFERS_VIEW_PATH;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -62,12 +64,12 @@ public class AcceptBookRequestControllerTest {
     void should_accept_book_request() throws Exception {
         Principal principal = () -> USERNAME;
 
-        mockMvc.perform(post("/book-offers/requests")
+        mockMvc.perform(post(ACCEPT_REQUESTS_PATH)
                         .principal(principal)
                         .param("bookRequestId", String.valueOf(BOOK_REQUEST_ID))
                         .param("bookId", String.valueOf(BOOK_ID)))
                 .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/book-offers/" + BOOK_ID));
+                .andExpect(redirectedUrl(BOOK_OFFERS_VIEW_PATH + "/" + BOOK_ID));
 
         assertThat(
                 jdbcTemplate.queryForObject(

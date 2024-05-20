@@ -1,5 +1,7 @@
 package com.myy803.social_bookstore.controllers;
 
+import static com.myy803.social_bookstore.config.EndpointConfig.BOOK_OFFERS_SAVE_PATH;
+import static com.myy803.social_bookstore.config.EndpointConfig.HOMEPAGE_PATH;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -57,9 +59,9 @@ public class SaveBookOfferControllerTest {
         BookFormData formData = new BookFormData("Book Title", 2L, Arrays.asList(1L, 2L), "Summary");
         Principal principal = () -> USERNAME;
 
-        mockMvc.perform(post("/book-offers/save").principal(principal).flashAttr("bookFormData", formData))
+        mockMvc.perform(post(BOOK_OFFERS_SAVE_PATH).principal(principal).flashAttr("bookFormData", formData))
                 .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/homepage"));
+                .andExpect(redirectedUrl(HOMEPAGE_PATH));
 
         jdbcTemplate.query(
                 "SELECT * FROM books WHERE title = ?",

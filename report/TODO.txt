@@ -9,6 +9,4 @@ the patterns are important to be implemented
 4.SaveBookRequest
 it can be implemented after the searching is done successfully
 
-5. ViewBookRequestsForSpecificBookOffer
-6. AcceptBookRequest
-7. ViewContactInformation
+5. ViewContactInformation

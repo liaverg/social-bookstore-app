@@ -1,5 +1,6 @@
 package com.myy803.social_bookstore.controllers;
 
+import static com.myy803.social_bookstore.config.EndpointConfig.BOOK_OFFERS_VIEW_PATH;
 import static org.hamcrest.Matchers.hasSize;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -54,7 +55,7 @@ public class ViewBookOffersControllerTest {
         insertBookOffers();
         Principal principal = () -> USERNAME;
 
-        mockMvc.perform(get("/book-offers").principal(principal))
+        mockMvc.perform(get(BOOK_OFFERS_VIEW_PATH).principal(principal))
                 .andExpect(status().isOk())
                 .andExpect(view().name("books/view-book-offers"))
                 .andExpect(model().attribute("allBookOffers", hasSize(2)));

@@ -1,5 +1,6 @@
 package com.myy803.social_bookstore.controllers;
 
+import static com.myy803.social_bookstore.config.EndpointConfig.USER_PROFILE_PATH;
 import static org.hamcrest.Matchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -53,7 +54,7 @@ public class ViewUserProfileControllerTest {
     public void should_view_user_profile() throws Exception {
         Principal principal = () -> USERNAME;
 
-        mockMvc.perform(get("/profile").principal(principal))
+        mockMvc.perform(get(USER_PROFILE_PATH).principal(principal))
                 .andExpect(status().isOk())
                 .andExpect(view().name("profile"))
                 .andExpect(model().attribute("allBookCategories", hasSize(12)))
