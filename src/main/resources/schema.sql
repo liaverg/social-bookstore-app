@@ -66,3 +66,13 @@ create table if not exists book_authors(
     foreign key (author_id)         references authors (id) on delete cascade,
     primary key (id)
 );
+
+create table if not exists book_requesting_users(
+    id                              bigint              not null     auto_increment,
+    book_id                         bigint              not null,
+    user_profile_id                 bigint              not null,
+    status                          varchar(255)        not null,
+    foreign key (book_id)           references books (id) on delete cascade,
+    foreign key (user_profile_id)   references user_profiles (id) on delete cascade,
+    primary key (id)
+);
