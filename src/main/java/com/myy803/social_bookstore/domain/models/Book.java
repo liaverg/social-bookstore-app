@@ -38,7 +38,7 @@ public class Book {
     private List<Author> authors;
 
     @OneToMany(mappedBy = "book", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<BookRequest> requestingUsers;
+    private List<BookRequest> bookRequests;
 
     public Book(
             UserProfile userProfile, String title, String summary, BookCategory bookCategory, List<Author> authors) {
