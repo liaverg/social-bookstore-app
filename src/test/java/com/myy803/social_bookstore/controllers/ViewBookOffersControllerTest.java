@@ -4,7 +4,6 @@ import static org.hamcrest.Matchers.hasSize;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-import com.myy803.social_bookstore.domain.models.Role;
 import java.security.Principal;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -24,7 +23,12 @@ import org.springframework.web.context.WebApplicationContext;
 @SpringBootTest
 @AutoConfigureMockMvc
 @Sql(
-        scripts = {"classpath:add-book-categories.sql", "classpath:add-authors.sql"},
+        statements = {
+            "insert into users (username, password, role) values ('username', 'encodedPassword', 'USER');",
+            "insert into user_profiles (user_id, full_name, address, age, phone_number) "
+                    + "values (1, 'John Doe', '123 Main St', '30', '123-456-7890');",
+            "insert into book_categories (category) values ('Fiction'), ('Non-Fiction');"
+        },
         executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
 @Sql(scripts = "classpath:clean-database.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
 public class ViewBookOffersControllerTest {
@@ -37,6 +41,8 @@ public class ViewBookOffersControllerTest {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+    private static final String USERNAME = "username";
+
     @BeforeEach
     public void setup() {
         mockMvc = MockMvcBuilders.webAppContextSetup(context).build();
@@ -45,39 +51,8 @@ public class ViewBookOffersControllerTest {
     @Test
     @DisplayName("View Book Offers")
     public void should_view_book_offers() throws Exception {
-        String username = "username";
-        String bookTitle1 = "Book Title 1";
-        String bookTitle2 = "Book Title 2";
-        String summary1 = "Summary of Book 1";
-        String summary2 = "Summary of Book 2";
-        jdbcTemplate.update(
-                "INSERT INTO users (username, password, role) VALUES (?,?, ?)",
-                username,
-                "encoded password",
-                Role.USER.toString());
-        jdbcTemplate.update(
-                "INSERT INTO user_profiles (id, user_id, full_name, address, age, phone_number)  VALUES (?,?,?,?,?,?)",
-                1,
-                1,
-                "John Doe",
-                "123 Main St",
-                "30",
-                "123-456-7890");
-        jdbcTemplate.update(
-                "INSERT INTO books (id, user_profile_id, title, book_category_id, summary) VALUES (?, ?, ?, ?, ?)",
-                1,
-                1,
-                bookTitle1,
-                1,
-                summary1);
-        jdbcTemplate.update(
-                "INSERT INTO books (id, user_profile_id, title, book_category_id, summary) VALUES (?, ?, ?, ?, ?)",
-                2,
-                1,
-                bookTitle2,
-                2,
-                summary2);
-        Principal principal = () -> username;
+        insertBookOffers();
+        Principal principal = () -> USERNAME;
 
         mockMvc.perform(get("/book-offers").principal(principal))
                 .andExpect(status().isOk())
@@ -85,24 +60,15 @@ public class ViewBookOffersControllerTest {
                 .andExpect(model().attribute("allBookOffers", hasSize(2)));
     }
 
+    private void insertBookOffers() {
+        jdbcTemplate.update("insert into books (user_profile_id, title, book_category_id, summary) "
+                + "values (1, 'Book Title 1', 1, 'Summary of Book 1'), (1, 'Book Title 2', 2, 'Summary of Book 2');");
+    }
+
     @Test
     @DisplayName("View Book Offers - Empty Offers")
     public void should_view_empty_book_offers() throws Exception {
-        String username = "username";
-        jdbcTemplate.update(
-                "INSERT INTO users (username, password, role) VALUES (?,?, ?)",
-                username,
-                "encoded password",
-                Role.USER.toString());
-        jdbcTemplate.update(
-                "INSERT INTO user_profiles (id, user_id, full_name, address, age, phone_number)  VALUES (?,?,?,?,?,?)",
-                1,
-                1,
-                "John Doe",
-                "123 Main St",
-                "30",
-                "123-456-7890");
-        Principal principal = () -> username;
+        Principal principal = () -> USERNAME;
 
         mockMvc.perform(get("/book-offers").principal(principal))
                 .andExpect(status().isOk())
