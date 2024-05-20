@@ -27,7 +27,8 @@
 </div>
 <div class="center-content">
     <div class="container">
-        <h2>Book Offers</h2>
+        <h2 th:if="${not #lists.isEmpty(allBookOffers)}">Book Offers</h2>
+        <h2 th:unless="${not #lists.isEmpty(allBookOffers)}">No Book Offers Found</h2>
         <hr class="hr">
 
         <table class="table table-bordered table-striped" id="book-offer-table">
