@@ -4,7 +4,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import com.myy803.social_bookstore.domain.formsdata.UserProfileFormData;
-import com.myy803.social_bookstore.domain.models.Role;
 import java.security.Principal;
 import java.util.List;
 import org.junit.jupiter.api.Assertions;
@@ -27,6 +26,10 @@ import org.springframework.web.context.WebApplicationContext;
 @AutoConfigureMockMvc
 @Sql(
         scripts = {"classpath:add-book-categories.sql", "classpath:add-authors.sql"},
+        statements = {
+            "insert into users (username, password, role) values ('username', 'encodedPassword', 'USER');",
+            "insert into user_profiles (user_id) values (1);"
+        },
         executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
 @Sql(scripts = "classpath:clean-database.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
 public class SaveUserProfileControllerTest {
@@ -40,6 +43,8 @@ public class SaveUserProfileControllerTest {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+    private static final String USERNAME = "username";
+
     @BeforeEach
     public void setup() {
         mockMvc = MockMvcBuilders.webAppContextSetup(context).build();
@@ -48,16 +53,9 @@ public class SaveUserProfileControllerTest {
     @Test
     @DisplayName("Save User Profile")
     void should_save_user_profile() throws Exception {
-        String username = "username";
-        jdbcTemplate.update(
-                "INSERT INTO users (username, password, role) VALUES (?,?, ?)",
-                username,
-                "encoded password",
-                Role.USER.toString());
-        jdbcTemplate.update("INSERT INTO user_profiles (id, user_id)  VALUES (?,?)", 1, 1);
         UserProfileFormData formData =
                 new UserProfileFormData("John Doe", "123 Main St", "30", "123-456-7890", List.of(10L), List.of(2L));
-        Principal principal = () -> username;
+        Principal principal = () -> USERNAME;
 
         mockMvc.perform(post("/profile").principal(principal).flashAttr("userProfileFormData", formData))
                 .andExpect(status().is3xxRedirection())
@@ -79,6 +77,6 @@ public class SaveUserProfileControllerTest {
                     Assertions.assertEquals("Agatha Cristie", rs.getString("author"));
                     return null;
                 },
-                username);
+                USERNAME);
     }
 }
