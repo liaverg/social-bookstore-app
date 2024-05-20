@@ -42,7 +42,8 @@ public class WebSecurityConfig {
                                         USER_PROFILE_PATH,
                                         BOOK_OFFERS_SAVE_PATH,
                                         BOOK_OFFERS_VIEW_PATH,
-                                        BOOK_OFFERS_VIEW_REQUESTS_PATH)
+                                        BOOK_OFFERS_VIEW_REQUESTS_PATH,
+                                        ACCEPT_REQUESTS_PATH)
                                 .authenticated())
                 .authenticationProvider(authenticationProvider())
                 .build();

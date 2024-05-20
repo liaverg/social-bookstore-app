@@ -48,10 +48,14 @@
                 <td>
                     <div class="row">
                         <div class="column">
-                            <a class="btn btn-primary mb-2 primaryButton"
-                               onclick="if (!(confirm('Are you sure you want to accept the request from this user? The other requests will be automatically denied'))) return false">
-                                Accept Request
-                            </a>
+                            <form th:action="@{/book-offers/requests}" method="post">
+                                <input type="hidden" name="bookRequestId" th:value="${bookRequest.id}">
+                                <input type="hidden" name="bookId" th:value="${bookRequest.getBookOfferId()}">
+                                <button type="submit" class="btn btn-primary mb-2 primaryButton"
+                                        onclick="return confirm('Are you sure you want to accept the request from this user? The other requests will be automatically denied')">
+                                    Accept Request
+                                </button>
+                            </form>
                         </div>
                         <div class="column">
                             <a class="btn btn-primary mb-2 primaryButton disabled">
