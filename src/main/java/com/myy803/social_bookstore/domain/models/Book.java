@@ -37,6 +37,9 @@ public class Book {
             inverseJoinColumns = @JoinColumn(name = "author_id"))
     private List<Author> authors;
 
+    @OneToMany(mappedBy = "book", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<BookRequest> requestingUsers;
+
     public Book(
             UserProfile userProfile, String title, String summary, BookCategory bookCategory, List<Author> authors) {
         this.id = null;

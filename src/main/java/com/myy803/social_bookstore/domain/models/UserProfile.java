@@ -60,6 +60,11 @@ public class UserProfile {
     @OneToMany(mappedBy = "userProfile", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Book> bookOffers;
 
+    @Setter
+    @Getter
+    @OneToMany(mappedBy = "userProfile", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<BookRequest> bookRequests;
+
     public UserProfile(User user) {
         this.id = null;
         this.user = user;
