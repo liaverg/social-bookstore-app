@@ -22,48 +22,40 @@
     <h1>Social Bookstore App</h1>
     <div>
         <a th:href="@{/homepage}" class="btn btn-primary btn-sm mb-3" style="padding: 8px 20px;font-size: 16px;">Back To Homepage</a>
+        <a th:href="@{/book-offers}" class="btn btn-primary btn-sm mb-3" style="padding: 8px 20px;font-size: 16px;">Back To Book Offers</a>
         <a th:href="@{/logout}" class="btn btn-primary btn-sm mb-3" style="padding: 8px 20px;font-size: 16px;">Logout</a>
     </div>
 </div>
 <div class="center-content">
     <div class="container">
-        <h2 th:if="${not #lists.isEmpty(allBookOffers)}">Book Offers</h2>
-        <h2 th:unless="${not #lists.isEmpty(allBookOffers)}">No Book Offers Found</h2>
-        <hr class="hr">
-
-        <table class="table table-bordered table-striped" id="book-offer-table">
+        <h2 th:if="${not #lists.isEmpty(bookRequests)}">Book Requests for "<span th:text="${bookRequests.get(0).getBookTitle()}"></span>"</h2>
+        <h2 th:unless="${not #lists.isEmpty(bookRequests)}">No Book Requests Found</h2>
+        <table class="table table-bordered table-striped">
             <thead>
             <tr>
-                <th>Title</th>
-                <th>Category</th>
-                <th>Author(s)</th>
-                <th>Summary</th>
+                <th>ID</th>
+                <th>Requesting User</th>
+                <th>Status</th>
                 <th>Actions</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="bookOffer: ${allBookOffers}">
-                <td th:text="${bookOffer.title}"></td>
-                <td th:text="${bookOffer.category}"></td>
-                <td>
-                    <ul>
-                        <li th:each="author: ${bookOffer.authors}" th:text="${author}"></li>
-                    </ul>
-                </td>
-                <td th:text="${bookOffer.summary}"></td>
+            <tbody>
+            <tr th:each="bookRequest: ${bookRequests}">
+                <td th:text="${bookRequest.id}"></td>
+                <td th:text="${bookRequest.requestingUserUsername}"></td>
+                <td th:text="${bookRequest.status}"></td>
                 <td>
                     <div class="row">
                         <div class="column">
-                            <a th:href="@{/book-offers/{bookId}(bookId=${bookOffer.id})}"
-                               class="btn btn-primary mb-2 primaryButton">
-                                View Book Requests
+                            <a class="btn btn-primary mb-2 primaryButton"
+                               onclick="if (!(confirm('Are you sure you want to accept the request from this user? The other requests will be automatically denied'))) return false">
+                                Accept Request
                             </a>
                         </div>
                         <div class="column">
-                            <a href=""
-                               class="btn  btn-primary mb-2 primaryButton btn-danger disabled"
-                               onclick="if (!(confirm('This book offer and its book requests will be deleted. Are you sure you want to delete this book offer? '))) return false">
-                                Delete
+                            <a class="btn btn-primary mb-2 primaryButton disabled">
+                                View Contact Details
                             </a>
                         </div>
                     </div>

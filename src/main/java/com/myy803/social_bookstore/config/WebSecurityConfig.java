@@ -38,7 +38,11 @@ public class WebSecurityConfig {
                                 .requestMatchers("/", LOGIN_PATH, LOGOUT_PATH, REGISTER_PATH)
                                 .permitAll()
                                 .requestMatchers(
-                                        HOMEPAGE_PATH, USER_PROFILE_PATH, BOOK_OFFERS_SAVE_PATH, BOOK_OFFERS_VIEW_PATH)
+                                        HOMEPAGE_PATH,
+                                        USER_PROFILE_PATH,
+                                        BOOK_OFFERS_SAVE_PATH,
+                                        BOOK_OFFERS_VIEW_PATH,
+                                        BOOK_OFFERS_VIEW_REQUESTS_PATH)
                                 .authenticated())
                 .authenticationProvider(authenticationProvider())
                 .build();
