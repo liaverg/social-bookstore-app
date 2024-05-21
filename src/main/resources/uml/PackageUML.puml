@@ -1,0 +1,34 @@
+@startuml
+package "com.myy803.social_bookstore.config" {
+}
+
+package "com.myy803.social_bookstore.services" {
+}
+
+package "com.myy803.social_bookstore.mappers" {
+}
+
+package "com.myy803.social_bookstore.controllers" {
+}
+
+package "com.myy803.social_bookstore.domain.views" {
+}
+
+package "com.myy803.social_bookstore.domain.commands" {
+}
+
+package "com.myy803.social_bookstore.domain.models" {
+}
+
+"com.myy803.social_bookstore.controllers" --> "com.myy803.social_bookstore.services"
+"com.myy803.social_bookstore.services" --> "com.myy803.social_bookstore.mappers"
+"com.myy803.social_bookstore.mappers" --> "com.myy803.social_bookstore.domain.models"
+"com.myy803.social_bookstore.controllers" --> "com.myy803.social_bookstore.domain.views"
+"com.myy803.social_bookstore.services" --> "com.myy803.social_bookstore.domain.commands"
+"com.myy803.social_bookstore.config" --> "com.myy803.social_bookstore.controllers"
+
+"com.myy803.social_bookstore.controllers" --> "com.myy803.social_bookstore.domain.commands"
+"com.myy803.social_bookstore.services" --> "com.myy803.social_bookstore.domain.views"
+
+"com.myy803.social_bookstore.services" --> "com.myy803.social_bookstore.domain.models"
+@enduml
