@@ -60,11 +60,12 @@
                             </a>
                         </div>
                         <div class="column">
-                            <a href=""
-                               class="btn  btn-primary mb-2 primaryButton btn-danger disabled"
-                               onclick="if (!(confirm('This book offer and its book requests will be deleted. Are you sure you want to delete this book offer? '))) return false">
-                                Delete
-                            </a>
+                            <div class="column">
+                                <form th:action="@{/book-offers/{bookId}/delete(bookId=${bookOffer.id})}" method="post">
+                                    <input type="submit" value="Delete" class="btn btn-primary mb-2 primaryButton btn-danger"
+                                           onclick="if (!(confirm('This book offer and its book requests will be deleted. Are you sure you want to delete this book offer?'))) return false">
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </td>
