@@ -8,6 +8,7 @@ public class EndpointConfig {
     public static final String USER_PROFILE_PATH = "/profile";
     public static final String BOOK_OFFERS_SAVE_PATH = "/book-offers/save";
     public static final String BOOK_OFFERS_VIEW_PATH = "/book-offers";
+    public static final String BOOK_OFFERS_DELETE_PATH = "/book-offers/{bookId}/delete";
     public static final String BOOK_OFFERS_VIEW_REQUESTS_PATH = "/book-offers/{bookId}";
     public static final String ACCEPT_REQUESTS_PATH = "/book-offers/requests";
 }
