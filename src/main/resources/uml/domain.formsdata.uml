@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.myy803.social_bookstore.domain.formsdata</OriginalElement>
+  <nodes>
+    <node x="238.5" y="-224.0">com.myy803.social_bookstore.domain.formsdata.BookFormData</node>
+    <node x="-460.1669421487603" y="-206.55867768595033">com.myy803.social_bookstore.domain.formsdata.RegisterFormData</node>
+    <node x="-172.0" y="-236.0">com.myy803.social_bookstore.domain.formsdata.UserProfileFormData</node>
+  </nodes>
+  <notes />
+  <edges />
+  <settings layout="Orthogonal Groups" zoom="0.8310439560439561" showDependencies="true" x="159.5" y="118.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
