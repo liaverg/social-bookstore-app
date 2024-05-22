@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.myy803.social_bookstore.config</OriginalElement>
+  <nodes>
+    <node x="170.21746293245474" y="470.71169686985166">com.myy803.social_bookstore.config.ThymeleafUtil</node>
+    <node x="170.21746293245474" y="632.0749588138385">com.myy803.social_bookstore.config.PasswordEncoderConfig</node>
+    <node x="-348.0" y="632.0749588138386">com.myy803.social_bookstore.config.EndpointConfig</node>
+    <node x="-357.83360790774304" y="193.48599670510708">com.myy803.social_bookstore.config.WebSecurityConfig</node>
+    <node x="161.5724876441517" y="193.48599670510708">com.myy803.social_bookstore.config.WebMvcConfig</node>
+    <node x="-357.83360790774304" y="482.7116968698517">com.myy803.social_bookstore.config.CustomSecuritySuccessHandler</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.myy803.social_bookstore.config.WebSecurityConfig" target="com.myy803.social_bookstore.config.CustomSecuritySuccessHandler" relationship="TO_ONE">
+      <point x="-13.0" y="80.0" />
+      <point x="0.0" y="-31.5" />
+    </edge>
+  </edges>
+  <settings layout="Orthogonal Groups" zoom="0.6569264069264069" showDependencies="true" x="446.63838550247146" y="865.5700164744646" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

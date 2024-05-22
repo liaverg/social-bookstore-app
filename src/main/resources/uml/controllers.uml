@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>B:/Vault/IdeaProjects/MYY803-Projects/Project 2024/social-bookstore-app/src/main/java/com/myy803/social_bookstore/controllers</OriginalElement>
+  <nodes>
+    <node x="-707.4883177570093" y="1521.5">com.myy803.social_bookstore.domain.views.ContactDetailsView</node>
+    <node x="-729.9883177570093" y="817.3473520249222">com.myy803.social_bookstore.services.ViewAuthorsUseCase</node>
+    <node x="561.435358255452" y="1320.923676012461">com.myy803.social_bookstore.controllers.ViewBookRequestsForSpecificBookController</node>
+    <node x="-773.9883177570093" y="949.5">com.myy803.social_bookstore.domain.commands.SaveUserProfileCommand</node>
+    <node x="-305.4883177570093" y="1813.5">com.myy803.social_bookstore.controllers.ViewContactDetailsController</node>
+    <node x="-806.4883177570093" y="2113.5">com.myy803.social_bookstore.controllers.DeleteBookOfferController</node>
+    <node x="850.0116822429907" y="839.1355140186917">com.myy803.social_bookstore.services.ViewBookOffersUseCase</node>
+    <node x="-377.4883177570093" y="1393.5">com.myy803.social_bookstore.controllers.SaveUserProfileController</node>
+    <node x="535.935358255452" y="1728.923676012461">com.myy803.social_bookstore.controllers.RegisterController</node>
+    <node x="-379.9883177570093" y="224.3473520249222">com.myy803.social_bookstore.domain.views.UserProfileView</node>
+    <node x="-811.4883177570093" y="1826.5">com.myy803.social_bookstore.services.ViewContactDetailsUseCase</node>
+    <node x="-392.9883177570093" y="780.3473520249222">com.myy803.social_bookstore.controllers.ViewUserProfileController</node>
+    <node x="902.935358255452" y="1680.923676012461">com.myy803.social_bookstore.controllers.AcceptBookRequestController</node>
+    <node x="975.935358255452" y="1533.923676012461">com.myy803.social_bookstore.services.AcceptBookRequestUseCase</node>
+    <node x="-330.4883177570093" y="637.3473520249222">com.myy803.social_bookstore.services.ViewUserProfileUseCase</node>
+    <node x="381.0116822429907" y="357.3473520249222">com.myy803.social_bookstore.services.ViewBookCategoriesUseCase</node>
+    <node x="216.435358255452" y="1536.923676012461">com.myy803.social_bookstore.domain.commands.RegisterCommand</node>
+    <node x="128.435358255452" y="964.9236760124611">com.myy803.social_bookstore.domain.views.BookRequestView</node>
+    <node x="836.0116822429907" y="986.1355140186917">com.myy803.social_bookstore.controllers.ViewBookOffersController</node>
+    <node x="-681.4883177570093" y="320.3473520249222">com.myy803.social_bookstore.domain.views.AuthorView</node>
+    <node x="847.5116822429907" y="157.3473520249222">com.myy803.social_bookstore.services.SaveBookOfferUseCase</node>
+    <node x="102.51168224299067" y="320.3473520249222">com.myy803.social_bookstore.domain.views.BookCategoryView</node>
+    <node x="-742.4883177570093" y="1966.5">com.myy803.social_bookstore.services.DeleteBookOfferUseCase</node>
+    <node x="171.435358255452" y="1753.923676012461">com.myy803.social_bookstore.services.RegisterUseCase</node>
+    <node x="-119.48831775700933" y="1966.5">com.myy803.social_bookstore.controllers.LoginController</node>
+    <node x="56.435358255452" y="1333.923676012461">com.myy803.social_bookstore.services.ViewBookRequestsForSpecificBookUseCase</node>
+    <node x="347.0116822429907" y="108.3473520249222">com.myy803.social_bookstore.controllers.SaveBookOfferController</node>
+    <node x="884.5116822429907" y="426.13551401869165">com.myy803.social_bookstore.domain.views.BookOfferView</node>
+    <node x="442.5116822429907" y="-271.6526479750778">com.myy803.social_bookstore.domain.commands.SaveBookOfferCommand</node>
+    <node x="-383.4883177570093" y="1966.5">com.myy803.social_bookstore.controllers.HomepageController</node>
+    <node x="-797.4883177570093" y="1406.5">com.myy803.social_bookstore.services.SaveUserProfileUseCase</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.myy803.social_bookstore.controllers.ViewUserProfileController" target="com.myy803.social_bookstore.services.ViewUserProfileUseCase" relationship="TO_ONE">
+      <point x="0.0" y="-68.5" />
+      <point x="0.0" y="31.5" />
+    </edge>
+    <edge source="com.myy803.social_bookstore.controllers.ViewUserProfileController" target="com.myy803.social_bookstore.services.ViewAuthorsUseCase" relationship="TO_ONE">
+      <point x="-215.5" y="0.0" />
+      <point x="132.5" y="0.0" />
+    </edge>
+    <edge source="com.myy803.social_bookstore.services.SaveBookOfferUseCase" target="com.myy803.social_bookstore.domain.commands.SaveBookOfferCommand" relationship="DEPENDENCY">
+      <point x="0.0" y="-31.5" />
+      <point x="1022.5116822429907" y="-131.1526479750778" />
+      <point x="120.0" y="0.0" />
+    </edge>
+    <edge source="com.myy803.social_bookstore.services.ViewContactDetailsUseCase" target="com.myy803.social_bookstore.domain.views.ContactDetailsView" relationship="DEPENDENCY">
+      <point x="0.0" y="-31.5" />
+      <point x="0.0" y="116.5" />
+    </edge>
+    <edge source="com.myy803.social_bookstore.controllers.DeleteBookOfferController" target="com.myy803.social_bookstore.services.DeleteBookOfferUseCase" relationship="TO_ONE">
+      <point x="0.0" y="-44.5" />
+      <point x="0.0" y="31.5" />
+    </edge>
+    <edge source="com.myy803.social_bookstore.controllers.SaveBookOfferController" target="com.myy803.social_bookstore.domain.commands.SaveBookOfferCommand" relationship="CREATE">
+      <point x="0.0" y="-80.5" />
+      <point x="0.0" y="140.5" />
+    </edge>
+    <edge source="com.myy803.social_bookstore.controllers.SaveBookOfferController" target="com.myy803.social_bookstore.services.ViewBookCategoriesUseCase" relationship="TO_ONE">
+      <point x="0.0" y="80.5" />
+      <point x="0.0" y="-31.5" />
+    </edge>
+    <edge source="com.myy803.social_bookstore.controllers.ViewBookRequestsForSpecificBookController" target="com.myy803.social_bookstore.domain.views.BookRequestView" relationship="DEPENDENCY">
+      <point x="0.0" y="-44.5" />
+      <point x="794.435358255452" y="1105.423676012461" />
+      <point x="146.0" y="0.0" />
+    </edge>
+    <edge source="com.myy803.social_bookstore.services.ViewBookCategoriesUseCase" target="com.myy803.social_bookstore.domain.views.BookCategoryView" relationship="DEPENDENCY">
+      <point x="-181.5" y="0.0" />
+      <point x="100.0" y="0.0" />
+    </edge>
+    <edge source="com.myy803.social_bookstore.controllers.RegisterController" target="com.myy803.social_bookstore.services.RegisterUseCase" relationship="TO_ONE">
+      <point x="-158.5" y="0.0" />
+      <point x="143.0" y="0.0" />
+    </edge>
+    <edge source="com.myy803.social_bookstore.services.RegisterUseCase" target="com.myy803.social_bookstore.domain.commands.RegisterCommand" relationship="DEPENDENCY">
+      <point x="0.0" y="-31.5" />
+      <point x="0.0" y="68.5" />
+    </edge>
+    <edge source="com.myy803.social_bookstore.controllers.SaveBookOfferController" target="com.myy803.social_bookstore.services.ViewAuthorsUseCase" relationship="TO_ONE">
+      <point x="-215.5" y="0.0" />
+      <point x="-777.4883177570093" y="188.8473520249222" />
+      <point x="-777.4883177570093" y="848.8473520249222" />
+      <point x="-132.5" y="0.0" />
+    </edge>
+    <edge source="com.myy803.social_bookstore.services.ViewBookOffersUseCase" target="com.myy803.social_bookstore.domain.views.BookOfferView" relationship="DEPENDENCY">
+      <point x="0.0" y="-31.5" />
+      <point x="0.0" y="164.5" />
+    </edge>
+    <edge source="com.myy803.social_bookstore.controllers.ViewContactDetailsController" target="com.myy803.social_bookstore.domain.views.ContactDetailsView" relationship="DEPENDENCY">
+      <point x="0.0" y="-44.5" />
+      <point x="-97.48831775700933" y="1638.0" />
+      <point x="110.0" y="0.0" />
+    </edge>
+    <edge source="com.myy803.social_bookstore.services.ViewBookRequestsForSpecificBookUseCase" target="com.myy803.social_bookstore.domain.views.BookRequestView" relationship="DEPENDENCY">
+      <point x="0.0" y="-31.5" />
+      <point x="0.0" y="140.5" />
+    </edge>
+    <edge source="com.myy803.social_bookstore.controllers.RegisterController" target="com.myy803.social_bookstore.domain.commands.RegisterCommand" relationship="CREATE">
+      <point x="0.0" y="-56.5" />
+      <point x="694.435358255452" y="1605.423676012461" />
+      <point x="98.0" y="0.0" />
+    </edge>
+    <edge source="com.myy803.social_bookstore.services.SaveUserProfileUseCase" target="com.myy803.social_bookstore.domain.commands.SaveUserProfileCommand" relationship="DEPENDENCY">
+      <point x="0.0" y="-31.5" />
+      <point x="0.0" y="188.5" />
+    </edge>
+    <edge source="com.myy803.social_bookstore.services.ViewAuthorsUseCase" target="com.myy803.social_bookstore.domain.views.AuthorView" relationship="DEPENDENCY">
+      <point x="0.0" y="-31.5" />
+      <point x="0.0" y="68.5" />
+    </edge>
+    <edge source="com.myy803.social_bookstore.controllers.ViewBookOffersController" target="com.myy803.social_bookstore.services.ViewBookOffersUseCase" relationship="TO_ONE">
+      <point x="0.0" y="-44.5" />
+      <point x="0.0" y="31.5" />
+    </edge>
+    <edge source="com.myy803.social_bookstore.services.ViewUserProfileUseCase" target="com.myy803.social_bookstore.domain.views.UserProfileView" relationship="DEPENDENCY">
+      <point x="0.0" y="-31.5" />
+      <point x="0.0" y="164.5" />
+    </edge>
+    <edge source="com.myy803.social_bookstore.controllers.SaveBookOfferController" target="com.myy803.social_bookstore.services.SaveBookOfferUseCase" relationship="TO_ONE">
+      <point x="215.5" y="0.0" />
+      <point x="-175.0" y="0.0" />
+    </edge>
+    <edge source="com.myy803.social_bookstore.domain.views.UserProfileView" target="com.myy803.social_bookstore.domain.views.BookCategoryView" relationship="TO_MANY">
+      <point x="202.5" y="0.0" />
+      <point x="-100.0" y="0.0" />
+    </edge>
+    <edge source="com.myy803.social_bookstore.controllers.SaveUserProfileController" target="com.myy803.social_bookstore.services.SaveUserProfileUseCase" relationship="TO_ONE">
+      <point x="-200.0" y="0.0" />
+      <point x="180.0" y="0.0" />
+    </edge>
+    <edge source="com.myy803.social_bookstore.controllers.ViewBookRequestsForSpecificBookController" target="com.myy803.social_bookstore.services.ViewBookRequestsForSpecificBookUseCase" relationship="TO_ONE">
+      <point x="-233.0" y="0.0" />
+      <point x="218.0" y="0.0" />
+    </edge>
+    <edge source="com.myy803.social_bookstore.controllers.ViewContactDetailsController" target="com.myy803.social_bookstore.services.ViewContactDetailsUseCase" relationship="TO_ONE">
+      <point x="-208.0" y="0.0" />
+      <point x="214.0" y="0.0" />
+    </edge>
+    <edge source="com.myy803.social_bookstore.controllers.SaveUserProfileController" target="com.myy803.social_bookstore.domain.commands.SaveUserProfileCommand" relationship="CREATE">
+      <point x="0.0" y="-44.5" />
+      <point x="-177.48831775700933" y="1138.0" />
+      <point x="156.5" y="0.0" />
+    </edge>
+    <edge source="com.myy803.social_bookstore.controllers.ViewUserProfileController" target="com.myy803.social_bookstore.services.ViewBookCategoriesUseCase" relationship="TO_ONE">
+      <point x="215.5" y="0.0" />
+      <point x="562.5116822429907" y="848.8473520249222" />
+      <point x="0.0" y="31.5" />
+    </edge>
+    <edge source="com.myy803.social_bookstore.controllers.AcceptBookRequestController" target="com.myy803.social_bookstore.services.AcceptBookRequestUseCase" relationship="TO_ONE">
+      <point x="0.0" y="-44.5" />
+      <point x="0.0" y="31.5" />
+    </edge>
+    <edge source="com.myy803.social_bookstore.domain.views.UserProfileView" target="com.myy803.social_bookstore.domain.views.AuthorView" relationship="TO_MANY">
+      <point x="-202.5" y="0.0" />
+      <point x="84.0" y="0.0" />
+    </edge>
+  </edges>
+  <settings layout="Orthogonal Groups" zoom="0.35617198335644945" showDependencies="true" x="1048.5" y="622.9131619937691" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
