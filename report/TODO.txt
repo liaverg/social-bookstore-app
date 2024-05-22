@@ -1,6 +1,4 @@
 Implement the following use cases (descending order of importance, with 1 being the highest priority, followed by 2, etc):
-1. ViewContactInformation
-
 1. SearchBookRequest
 2. BrowseBookRequest
 both 2 and 3 use template strategy shiet, see the guidelines and hints and the requirement definitions.

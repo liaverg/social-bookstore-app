@@ -11,4 +11,5 @@ public class EndpointConfig {
     public static final String BOOK_OFFERS_DELETE_PATH = "/book-offers/{bookId}/delete";
     public static final String BOOK_OFFERS_VIEW_REQUESTS_PATH = "/book-offers/{bookId}";
     public static final String ACCEPT_REQUESTS_PATH = "/book-offers/requests";
+    public static final String CONTACT_DETAILS_PATH = "/book-offers/requests/contact-info";
 }

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View Book Offers Page</title>
+
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <style>
+        .center-content {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+
+<div style="text-align: center;">
+    <h1>Social Bookstore App</h1>
+    <div>
+        <a th:href="@{/homepage}" class="btn btn-primary btn-sm mb-3" style="padding: 8px 20px;font-size: 16px;">Back To Homepage</a>
+        <a th:href="@{/book-offers/{bookId}(bookId=${bookId})}" class="btn btn-primary btn-sm mb-3" style="padding: 8px 20px;font-size: 16px;">Back To Book Offer Requests</a>
+        <a th:href="@{/logout}" class="btn btn-primary btn-sm mb-3" style="padding: 8px 20px;font-size: 16px;">Logout</a>
+    </div>
+</div>
+<div class="center-content">
+        <h2>Contact Info for <span th:text="${contactDetails.username}"></span></h2>
+
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Full Name</h5>
+                <p class="card-text" id="fullName" th:text="${contactDetails.fullName}"></p>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Address</h5>
+                <p class="card-text" id="address" th:text="${contactDetails.address}"></p>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Phone Number</h5>
+                <p class="card-text" id="phoneNumber" th:text="${contactDetails.phoneNumber}"></p>
+            </div>
+        </div>
+</div>
+</body>
+</html>

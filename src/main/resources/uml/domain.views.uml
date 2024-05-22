@@ -3,11 +3,11 @@
   <ID>JAVA</ID>
   <OriginalElement>com.myy803.social_bookstore.domain.views</OriginalElement>
   <nodes>
-    <node x="-202.5" y="60.0">com.myy803.social_bookstore.domain.views.UserProfileView</node>
-    <node x="-84.0" y="-164.0">com.myy803.social_bookstore.domain.views.AuthorView</node>
-    <node x="242.0" y="255.60123966942137">com.myy803.social_bookstore.domain.views.BookRequestView</node>
-    <node x="-100.0" y="476.0">com.myy803.social_bookstore.domain.views.BookCategoryView</node>
     <node x="242.0" y="-160.0">com.myy803.social_bookstore.domain.views.BookOfferView</node>
+    <node x="242.0" y="255.60123966942137">com.myy803.social_bookstore.domain.views.BookRequestView</node>
+    <node x="-84.0" y="-164.0">com.myy803.social_bookstore.domain.views.AuthorView</node>
+    <node x="-202.5" y="60.0">com.myy803.social_bookstore.domain.views.UserProfileView</node>
+    <node x="-100.0" y="476.0">com.myy803.social_bookstore.domain.views.BookCategoryView</node>
   </nodes>
   <notes />
   <edges>
@@ -20,7 +20,7 @@
       <point x="0.0" y="68.0" />
     </edge>
   </edges>
-  <settings layout="Orthogonal Groups" zoom="0.7076023391812868" showDependencies="true" x="550.5213223140494" y="252.49999999999983" />
+  <settings layout="Orthogonal Groups" zoom="0.7076023391812868" showDependencies="true" x="1025.9999999999995" y="498.5" />
   <SelectedNodes />
   <Categories>
     <Category>Fields</Category>

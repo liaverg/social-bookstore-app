@@ -58,7 +58,8 @@
                             </form>
                         </div>
                         <div class="column">
-                            <a class="btn btn-primary mb-2 primaryButton disabled">
+                            <a th:href="@{/book-offers/requests/contact-info(bookId=${bookRequest.getBookOfferId()}, requestingUserUsername=${bookRequest.requestingUserUsername})}"
+                               class="btn btn-primary mb-2 primaryButton">
                                 View Contact Details
                             </a>
                         </div>
