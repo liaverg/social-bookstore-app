@@ -9,13 +9,15 @@ This project was developed for the [MYY803 Software Engineering ](https://www.cs
 2. Change username and password in application.properties
 
 The schema.sql script is run automatically.
-The test users that are provided are:
-username: supplier 
-password: supplier
-username: requester1 
-password: requester1
-username: requester2 
-password: requester2
+The test users that are provided are:  
+username: supplier   
+password: supplier  
+
+username: requester1   
+password: requester1  
+
+username: requester2   
+password: requester2  
 
 ## Tech Stack
 

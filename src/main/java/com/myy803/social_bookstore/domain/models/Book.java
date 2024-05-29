@@ -32,7 +32,7 @@ public class Book {
     @JoinColumn(name = "book_category_id", nullable = false)
     private BookCategory bookCategory;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "book_authors",
             joinColumns = @JoinColumn(name = "book_id"),
